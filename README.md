@@ -1,29 +1,62 @@
-# Lab4
-
-Turn in one copy for each group. If group members are not present in class they will be required to complete their own lab to receive credit. Please turn in **both an WORD or PDF file and your R Markdown script**. 
+Lab 4
 
 ## Lab Overview
 
-The entire lab will be worth 20 points. Clarity of code, including comments and interpretable variables names, along with thoughtful writing with an emphasis on concise interpretations will be important. 
-
-## Questions
-Answer the following questions in this R Markdown document. Please include code where necessary.
-
-### 1. Yahtzee
-#### a. (5 points)
-Implement a Monte Carlo procedure to estimate the probability of rolling a Yahtzee (5 dice all with the same value).
+The entire lab will be worth 20 points. 
 
 
-#### b (5 points)
-Suppose that you have currently rolled `1, 3, 3, 6, 4`. If you keep the pair of 3's and re-roll the other three dice, what is the probability of rolling a Yahtzee?
+### 1. R Style (5 points)
+The code and output below are designed to summarize a dataset about the titanic. Update the code and output to meet the style guide and make the results reproducible.
+
+Please include a bullet point summary of what you changed and why. 
+
+```
+THEDATA=read.csv('http://math.montana.edu/ahoegh/teaching/stat408/datasets/titanic.csv')
+
+library(dplyr)
+filter(tally(group_by(select(filter(THEDATA, Survived==1,),Pclass,Sex),Pclass,Sex)), !Pclass %in% c(1,3))
+
+```
 
 
-### 2. Black-Jack
-#### a. (5 points)
-Implement a procedure to estimate the probability of being dealt black-jack (2 cards that total 21). If you are unfamiliar with black jack, wikipedia provides a nice overview.
+There were 70 second class female passengers that survived and  17 male second class passengers that survived and a total of 90 second class passengers that survived.
 
 
-#### b. (5 points)
-Assume you have been dealt the 10 of hearts and the 4 of diamonds and the dealer has a 6 showing. By standard rules, you win if your card total is higher than the dealer, but less than or equal to 21. You have the option to *hit* which means adding more cards to your total, but if you go over 21 you **bust** and automatically lose.
+### 2. Debugging Example (10 points)
 
-Describe in words how you would simulate this process to estimate the probability of winning by hitting and staying.
+The goal of this code is to create a figure of age by passenger class. There are a few bugs in the code, identify and fix them. List all the things that you changed.
+
+```
+titanic == read_csv('http://math.montana.edu/ahoegh/teaching/stat408/datasets/titanic.csv')
+
+titanic 
+  %>% filter(!is.na(Age)) %>% # removed passengers without age
+  mutate(Pclass = factor(Pclass)) %>% # changed class to factor
+  ggplot(y = Age, x = Pclass)) %>%
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(color = Sex) +
+  theme_bw() + 
+  xlab(Passenger Class) +
+  ggtitle('Passenger age by class and gender on Titanic')
+```
+
+
+### 3. Data Structures / Subsetting (5 points)
+
+### a. 
+How old is the 747th passenger in the dataset?
+
+### b. 
+How old is the oldest passenger in the dataset?
+
+### c.
+
+Who is the oldest passenger in the dataset?
+
+
+### d. 
+What percentage of 3rd class males survived (Leonardo DiCaprio as Jack)?
+
+
+### e. 
+What percentage of 1st class females survived (Kate Winslet as Rose).
