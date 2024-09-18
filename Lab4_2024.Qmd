@@ -1,0 +1,41 @@
+---
+title: "Lab 4"
+format: pdf
+editor: source
+---
+
+## Lab Overview
+For this question, we will explore a few datasets and conduct an exploratory data analysis.
+
+```{r, message = F}
+library(tidyverse)
+```
+
+### 1. (2 points)
+
+Explore the Capital Bike Share dataset and pose a research question. See data information here: [https://www.kaggle.com/datasets/contactprad/bike-share-daily-data](https://www.kaggle.com/datasets/contactprad/bike-share-daily-data)
+
+```{r}
+bikes <- read_csv('https://raw.githubusercontent.com/stat408/Lab4/master/CapitalBikeshare.csv')
+```
+
+### 2. (2 points)
+
+Explore the squirrel dataset and pose a research question. See data dictionary here: [https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29)
+
+```{r}
+nyc_squirrels <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv")
+```
+
+### 3. (2 points)
+
+Explore the bachelor dataset and pose a research question. See data information here: [https://data.world/aerispaha/the-bachelor-contestants](https://data.world/aerispaha/the-bachelor-contestants)
+
+```{r}
+bachelor <- read_csv('https://raw.githubusercontent.com/stat408/Lab4/master/historical_bachelor_contestants.csv')
+```
+
+### 4. (14 points)
+
+Select one of the datasets and create at least one figure to address the research question posed for that dataset.
+
