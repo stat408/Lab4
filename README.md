@@ -1,62 +1,35 @@
-Lab 4
 
 ## Lab Overview
-
-The entire lab will be worth 20 points. 
-
-
-### 1. R Style (5 points)
-The code and output below are designed to summarize a dataset about the titanic. Update the code and output to meet the style guide and make the results reproducible.
-
-Please include a bullet point summary of what you changed and why. 
+For this question, we will explore a few datasets and conduct an exploratory data analysis.
 
 ```
-THEDATA=read.csv('http://math.montana.edu/ahoegh/teaching/stat408/datasets/titanic.csv')
-
-library(dplyr)
-filter(tally(group_by(select(filter(THEDATA, Survived==1,),Pclass,Sex),Pclass,Sex)), !Pclass %in% c(1,3))
-
+library(tidyverse)
 ```
 
+### 1. (2 points)
 
-There were 70 second class female passengers that survived and  17 male second class passengers that survived and a total of 90 second class passengers that survived.
-
-
-### 2. Debugging Example (10 points)
-
-The goal of this code is to create a figure of age by passenger class. There are a few bugs in the code, identify and fix them. List all the things that you changed.
+Explore the Capital Bike Share dataset and pose a research question. See data information here: [https://www.kaggle.com/datasets/contactprad/bike-share-daily-data](https://www.kaggle.com/datasets/contactprad/bike-share-daily-data)
 
 ```
-titanic == read_csv('http://math.montana.edu/ahoegh/teaching/stat408/datasets/titanic.csv')
-
-titanic 
-  %>% filter(!is.na(Age)) %>% # removed passengers without age
-  mutate(Pclass = factor(Pclass)) %>% # changed class to factor
-  ggplot(y = Age, x = Pclass)) %>%
-  geom_boxplot(outlier.shape = NA) +
-  geom_jitter(color = Sex) +
-  theme_bw() + 
-  xlab(Passenger Class) +
-  ggtitle('Passenger age by class and gender on Titanic')
+bikes <- read_csv('https://raw.githubusercontent.com/stat408/Lab4/master/CapitalBikeshare.csv')
 ```
 
+### 2. (2 points)
 
-### 3. Data Structures / Subsetting (5 points)
+Explore the squirrel dataset and pose a research question. See data dictionary here: [https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29)
 
-### a. 
-How old is the 747th passenger in the dataset?
+```
+nyc_squirrels <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv")
+```
 
-### b. 
-How old is the oldest passenger in the dataset?
+### 3. (2 points)
 
-### c.
+Explore the bachelor dataset and pose a research question. See data information here: [https://data.world/aerispaha/the-bachelor-contestants](https://data.world/aerispaha/the-bachelor-contestants)
 
-Who is the oldest passenger in the dataset?
+```
+bachelor <- read_csv('https://raw.githubusercontent.com/stat408/Lab4/master/historical_bachelor_contestants.csv')
+```
 
+### 4. (14 points)
 
-### d. 
-What percentage of 3rd class males survived (Leonardo DiCaprio as Jack)?
-
-
-### e. 
-What percentage of 1st class females survived (Kate Winslet as Rose).
+Select one of the datasets and create at least one figure to address the research question posed for that dataset.
